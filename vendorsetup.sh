@@ -82,9 +82,9 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export OF_CLOCK_POS=1
 
 	# Maintainer & Version settings
-	export FOX_VERSION="R11.1_5"
+	export OF_MAINTAINER="MiDoNaSR"
 	# export OF_MAINTAINER_AVATAR="$PWD/device/xiaomi/sweet_k6a/addon/avatar.png"
-	export OF_MAINTAINER="008"
+	export FOX_MAINTAINER_PATCH_VERSION='7'
 
 	# let's see what are our build VARs
 	if [ -n "$FOX_BUILD_LOG_FILE" -a -f "$FOX_BUILD_LOG_FILE" ]; then
