@@ -23,6 +23,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/twrp/config/common.mk)
 
+# Inherit any OrangeFox-specific settings
+$(call inherit-product-if-exists, $(DEVICE_PATH)/fox_sweet_k6a.mk)
+
 # Inherit device configuration
 $(call inherit-product, device/xiaomi/sweet_k6a/device.mk)
 

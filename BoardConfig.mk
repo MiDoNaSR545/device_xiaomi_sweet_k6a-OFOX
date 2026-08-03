@@ -47,7 +47,7 @@ QCOM_BOARD_PLATFORMS += sm6150
 
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=1 androidboot.usbcontroller=a600000.dwc3 androidboot.selinux=permissive
-BOARD_KERNEL_IMAGE_NAME := Image
+BOARD_KERNEL_IMAGE_NAME := Image.gz
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_BOOT_HEADER_VERSION := 2
 BOARD_KERNEL_BASE          := 0x00000000
@@ -57,7 +57,7 @@ BOARD_KERNEL_SECOND_OFFSET := 0x00000000
 BOARD_RAMDISK_OFFSET       := 0x01000000
 BOARD_DTB_OFFSET           := 0x01f00000
 TARGET_KERNEL_ARCH := arm64
-TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image.gz
 BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
 BOARD_INCLUDE_RECOVERY_DTBO := true
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
@@ -97,6 +97,7 @@ BOARD_SUPPRESS_SECURE_ERASE := true
 # File systems
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
+TARGET_USERIMAGES_USE_EROFS := true
 
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 
@@ -105,8 +106,34 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone18/temp
 TW_FRAMERATE := 120
 TW_INCLUDE_PYTHON := true
+TW_INCLUDE_LOGICAL := true # Helps with Dynamic Partitions UI
+TW_NO_BIND_SYSTEM := true # Prevents mount issues on modern Android
+
+# EROFS Support
+BOARD_EROFS_COMPRESSOR := lz4hc
+BOARD_EROFS_PCLUSTER_SIZE := 4096
+
+# UI & Tools
+TW_THEME := portrait_hdpi
+TW_USE_TOOLBOX := true
+
+#Neom_mostafameesr
+TW_INCLUDE_FASTBOOTD := true
+TW_INCLUDE_REPACKTOOLS := true
+TARGET_USES_MKE2FS := true
+TW_INCLUDE_NTFS_3G := true
+TW_INCLUDE_FUSE_EXFAT := true
+TW_HAS_FLASHLIGHT := true
+
+# Fix Screen Off Freezing & UI Glitches
+TW_NO_SCREEN_BLANK := true
+TW_NO_SCREEN_TIMEOUT := true
 
 # Crypto
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_CRYPTO_FBE := true
+TW_USE_FSCRYPT_POLICY := 2
+TW_INCLUDE_FBE_METADATA_DECRYPT := true
 BOARD_USES_QCOM_FBE_DECRYPTION := true
 BOARD_USES_METADATA_PARTITION := true
 
