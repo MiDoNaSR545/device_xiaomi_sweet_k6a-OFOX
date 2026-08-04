@@ -62,7 +62,7 @@ TW_USE_TOOLBOX := true
 TW_INCLUDE_RESETPROP := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
-TW_DEFAULT_BRIGHTNESS := 1200
+TW_DEFAULT_BRIGHTNESS := 800
 TW_MAX_BRIGHTNESS := 1200
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
@@ -70,13 +70,11 @@ TARGET_USES_MKE2FS := true
 TW_EXCLUDE_APEX := true
 TW_FRAMERATE := 120
 TW_INCLUDE_FASTBOOTD := true
+TW_NO_HAPTICS := true
 
 #Properties
 TW_OVERRIDE_SYSTEM_PROPS := \
     "ro.build.fingerprint=ro.system.build.fingerprint;ro.build.version.incremental"
-
-# Vibrator
-TW_SUPPORT_INPUT_AIDL_HAPTICS := true
 
 RECOVERY_LIBRARY_SOURCE_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libion.so \
